@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+
+
+
+    function playGame() {
+
+        function getComputerChoice() {
+
+            let computerSelection = Math.floor(Math.random() * 3);
+
+            if (computerSelection == 0) {
+                return ("Rock");
+
+            } else if (computerSelection == 1) {
+                return ("Paper");
+
+            } else if (computerSelection == 2) {
+                return ("Scissors");
+
+            }
+
+
+        }
+
+        function playRound(playerSelection, computerSelection) {
+
+            if (playerSelection == "rock" && computerSelection == "Rock") {
+                alert ("tie! Both you and the computer dropped Rock!")
+                return ("tie! Both you and the computer dropped Rock!")    
+            } else if (playerSelection == "rock" && computerSelection == "Paper") {
+                alert ("You lose! Paper beats Rock!")
+                return (computerScore = computerScore + 1)
+            } else if (playerSelection == "rock" && computerSelection == "Scissors") {
+                alert ("You won! Rock beats Scissors!")
+                return (playerScore = playerScore + 1)
+            } else if (playerSelection == "paper" && computerSelection == "Paper") {
+                alert("tie! Both you and the computer dropped Paper!")
+                return ("tie! Both you and the computer dropped Paper!")
+            } else if (playerSelection == "paper" && computerSelection == "Scissors") {
+                alert ("You lose! Scissors beats paper!")
+                return (ccomputerScore = computerScore + 1)
+            } else if (playerSelection == "paper" && computerSelection == "Rock") {
+                alert ("You won! Paper beats Rock!")
+                return (playerScore = playerScore + 1)
+            } else if (playerSelection == "scissors" && computerSelection == "Paper") {
+                alert ("You won! Scissors beats Paper!")
+                return (playerScore = playerScore + 1)
+            } else if (playerSelection == "scissors" && computerSelection == "Scissors") {
+                alert ("tie! Both you and the computer dropped Scissors")
+                return ("tie! Both you and the computer dropped Scissors")
+            } else if (playerSelection == "scissors" && computerSelection == "Rock") {
+                alert ("You lose! Rock beats Scissors!")
+                return (computerScore = computerScore + 1)
+            }
+
+
+        }
+
+        let playerSelection = prompt("Choose between rock paper and scissors").toLowerCase();
+        let computerSelection = getComputerChoice();
+        
+        playRound(playerSelection, computerSelection);
+        
+        console.log(playerScore);
+        console.log(computerScore);
+
+
+    }
+
+    let playerScore = 0;
+    let computerScore = 0;
+    for (let i = 0; i < 5; i++) {
+    playGame()
+    
+}
+    
+if (playerScore > computerScore) {
+        alert( "you won")
+    } else if (playerScore < computerScore) {
+        alert("you lose")
+    } else if (playerScore == computerScore) {
+        alert("tie")
+    }
+
+
+</script>
+
+<body>
+
+</body>
+
+</html>
