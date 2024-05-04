@@ -8,14 +8,26 @@
 </head>
 
 <body>
+    <div>
+        <p>Make your selection:</p>
+    </div>
     <button id="button1">Rock</button>
     <button id="button2">Paper</button>
     <button id="button3">Scissors</button>
+
+
+    <div>
+        <p>Player Score = <span id="pScore"></span></p>
+        <p>Computer Score = <span id="cScore"></span></p>
+    </div>
+    <div id="message"></div>
+
 </body>
 
 <script>
     function playGame() {
         // determine computer choice between the 3 option
+
         function getComputerChoice() {
             let computerSelection = Math.floor(Math.random() * 3);
             if (computerSelection == 0) {
@@ -26,64 +38,78 @@
                 return ("Scissors");
             }
         }
-        // toss 1 round combining player selection + cpu selection and returing a message and
-        // the updated score
-        function playRound(playerSelection, computerSelection) {
+        // toss 1 round combining player selection + cpu selection, modify the DOM, and returing the updated score
+        function playRound(playerSelection, computerSelection) {    
 
             if (playerSelection == "rock" && computerSelection == "Rock") {
-                alert("tie! Both you and the computer dropped Rock!")
-                return ("tie! Both you and the computer dropped Rock!")
+                const parentElement = document.getElementById('message');
+                parentElement.innerHTML = "<p>Tie! Both you and the computer dropped Rock!</p>";
+
             } else if (playerSelection == "rock" && computerSelection == "Paper") {
-                alert("You lose! Paper beats Rock!")
+                const parentElement = document.getElementById('message');
+                parentElement.innerHTML = "<p>You lose! Paper beats Rock!</p>";
                 return (computerScore = computerScore + 1)
             } else if (playerSelection == "rock" && computerSelection == "Scissors") {
-                alert("You won! Rock beats Scissors!")
+                const parentElement = document.getElementById('message');
+                parentElement.innerHTML = "<p>You won! Rock beats Scissors!</p>";
                 return (playerScore = playerScore + 1)
             } else if (playerSelection == "paper" && computerSelection == "Paper") {
-                alert("tie! Both you and the computer dropped Paper!")
-                return ("tie! Both you and the computer dropped Paper!")
+                const parentElement = document.getElementById('message');
+                parentElement.innerHTML = "<p>Tie! Both you and the computer dropped Paper!</p>";
+                return ("Tie! Both you and the computer dropped Paper!")
             } else if (playerSelection == "paper" && computerSelection == "Scissors") {
-                alert("You lose! Scissors beats paper!")
-                return (ccomputerScore = computerScore + 1)
+                const parentElement = document.getElementById('message');
+                parentElement.innerHTML = "<p>You lose! Scissors beats paper!</p>";
+                return (computerScore = computerScore + 1)
             } else if (playerSelection == "paper" && computerSelection == "Rock") {
-                alert("You won! Paper beats Rock!")
+                const parentElement = document.getElementById('message');
+                parentElement.innerHTML = "<p>You won! Paper beats Rock!</p>";
                 return (playerScore = playerScore + 1)
             } else if (playerSelection == "scissors" && computerSelection == "Paper") {
-                alert("You won! Scissors beats Paper!")
+                const parentElement = document.getElementById('message');
+                parentElement.innerHTML = "<p>You won! Scissors beats Paper!</p>";
                 return (playerScore = playerScore + 1)
             } else if (playerSelection == "scissors" && computerSelection == "Scissors") {
-                alert("tie! Both you and the computer dropped Scissors")
-                return ("tie! Both you and the computer dropped Scissors")
+                const parentElement = document.getElementById('message');
+                parentElement.innerHTML = "<p>Tie! Both you and the computer dropped Scissors</p>";
+                return ("Tie! Both you and the computer dropped Scissors")
             } else if (playerSelection == "scissors" && computerSelection == "Rock") {
-                alert("You lose! Rock beats Scissors!")
+                const parentElement = document.getElementById('message');
+                parentElement.innerHTML = "<p>You lose! Rock beats Scissors!</p>";
                 return (computerScore = computerScore + 1)
             }
 
 
         }
-     
+// set scores default values
         let playerScore = 0;
         let computerScore = 0;
-
-
+// define the buttons
         const buttonRock = document.getElementById("button1");
         const buttonPaper = document.getElementById("button2");
         const buttonScissors = document.getElementById("button3");
-
+// listen to the click, play the round, modify the dom updating the score
         buttonRock.addEventListener('click', function () {
             let playerSelection = 'rock';
             let computerSelection = getComputerChoice();
             playRound(playerSelection, computerSelection);
+            const pScoreCount = document.getElementById('pScore');
+            pScoreCount.innerHTML = `${playerScore}`;
+            const cScoreCount = document.getElementById('cScore');
+            cScoreCount.innerHTML = `${computerScore}`;
             console.log('Rock button clicked!');
             console.log(playerScore);
             console.log(computerScore);
-
         });
 
         buttonPaper.addEventListener('click', function () {
             let playerSelection = 'paper';
             let computerSelection = getComputerChoice();
             playRound(playerSelection, computerSelection);
+            const pScoreCount = document.getElementById('pScore');
+            pScoreCount.innerHTML = `${playerScore}`;
+            const cScoreCount = document.getElementById('cScore');
+            cScoreCount.innerHTML = `${computerScore}`;
             console.log('Paper button clicked!');
             console.log(playerScore);
             console.log(computerScore);
@@ -93,14 +119,22 @@
             let playerSelection = 'scissors';
             let computerSelection = getComputerChoice();
             playRound(playerSelection, computerSelection);
+            const pScoreCount = document.getElementById('pScore');
+            pScoreCount.innerHTML = `${playerScore}`;
+            const cScoreCount = document.getElementById('cScore');
+            cScoreCount.innerHTML = `${computerScore}`;
             console.log('Scissors button clicked!');
             console.log(playerScore);
             console.log(computerScore);
         });
 
+        const pScoreCount = document.getElementById('pScore');
+        pScoreCount.innerHTML = `${playerScore}`;
+        const cScoreCount = document.getElementById('cScore');
+        cScoreCount.innerHTML = `${computerScore}`;
+
 
     }
-
 
 
 
