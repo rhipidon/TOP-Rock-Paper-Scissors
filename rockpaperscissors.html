@@ -9,7 +9,7 @@
 
 <body>
     <div>
-        <p>Make your selection:</p>
+        <p id="intro">Make your selection:</p>
     </div>
     <button id="button1">Rock</button>
     <button id="button2">Paper</button>
@@ -21,6 +21,7 @@
         <p>Computer Score = <span id="cScore"></span></p>
     </div>
     <div id="message"></div>
+    <div id="result"></div>
 
 </body>
 
@@ -39,7 +40,7 @@
             }
         }
         // toss 1 round combining player selection + cpu selection, modify the DOM, and returing the updated score
-        function playRound(playerSelection, computerSelection) {    
+        function playRound(playerSelection, computerSelection) {
 
             if (playerSelection == "rock" && computerSelection == "Rock") {
                 const parentElement = document.getElementById('message');
@@ -81,14 +82,14 @@
 
 
         }
-// set scores default values
+        // set scores default values
         let playerScore = 0;
         let computerScore = 0;
-// define the buttons
+        // define the buttons
         const buttonRock = document.getElementById("button1");
         const buttonPaper = document.getElementById("button2");
         const buttonScissors = document.getElementById("button3");
-// listen to the click, play the round, modify the dom updating the score
+        // listen to the click, play the round, modify the dom updating the score
         buttonRock.addEventListener('click', function () {
             let playerSelection = 'rock';
             let computerSelection = getComputerChoice();
@@ -97,9 +98,34 @@
             pScoreCount.innerHTML = `${playerScore}`;
             const cScoreCount = document.getElementById('cScore');
             cScoreCount.innerHTML = `${computerScore}`;
+            if (playerScore == 5) {
+                const result1 = document.getElementById('message');
+                result1.innerHTML = "<p>Player won! <br> Reload the page to play again.</p>";
+                const rockButton = document.getElementById('button1');
+                rockButton.remove();
+                const paperButton = document.getElementById('button2');
+                paperButton.remove();
+                const scissorsButton = document.getElementById('button3');
+                scissorsButton.remove();
+                const intro = document.getElementById('intro');
+                intro.remove();
+            }
+            else if (computerScore == 5) {
+                const result2 = document.getElementById('message');
+                result2.innerHTML = "<p>Computer won! <br> Reload the page to play again.</p>";
+                const rockButton = document.getElementById('button1');
+                rockButton.remove();
+                const paperButton = document.getElementById('button2');
+                paperButton.remove();
+                const scissorsButton = document.getElementById('button3');
+                scissorsButton.remove();
+                const intro = document.getElementById('intro');
+                intro.remove();
+            }
             console.log('Rock button clicked!');
             console.log(playerScore);
             console.log(computerScore);
+
         });
 
         buttonPaper.addEventListener('click', function () {
@@ -110,6 +136,30 @@
             pScoreCount.innerHTML = `${playerScore}`;
             const cScoreCount = document.getElementById('cScore');
             cScoreCount.innerHTML = `${computerScore}`;
+            if (playerScore == 5) {
+                const result1 = document.getElementById('message');
+                result1.innerHTML = "<p>Player won! <br> Reload the page to play again.</p>";
+                const rockButton = document.getElementById('button1');
+                rockButton.remove();
+                const paperButton = document.getElementById('button2');
+                paperButton.remove();
+                const scissorsButton = document.getElementById('button3');
+                scissorsButton.remove();
+                const intro = document.getElementById('intro');
+                intro.remove();
+            }
+            else if (computerScore == 5) {
+                const result2 = document.getElementById('message');
+                result2.innerHTML = "<p>Computer won! <br> Reload the page to play again.</p>";
+                const rockButton = document.getElementById('button1');
+                rockButton.remove();
+                const paperButton = document.getElementById('button2');
+                paperButton.remove();
+                const scissorsButton = document.getElementById('button3');
+                scissorsButton.remove();
+                const intro = document.getElementById('intro');
+                intro.remove();
+            }
             console.log('Paper button clicked!');
             console.log(playerScore);
             console.log(computerScore);
@@ -123,6 +173,41 @@
             pScoreCount.innerHTML = `${playerScore}`;
             const cScoreCount = document.getElementById('cScore');
             cScoreCount.innerHTML = `${computerScore}`;
+            if (playerScore === 5) { 
+                
+               
+                
+                const result1 = document.getElementById('message');
+                result1.innerHTML = "<p>Player won! <br> Reload the page to play again.</p>";
+                
+                const rockButton = document.getElementById('button1');
+                rockButton.remove();
+                const paperButton = document.getElementById('button2');
+                paperButton.remove();
+                const scissorsButton = document.getElementById('button3');
+                scissorsButton.remove();
+                const intro = document.getElementById('intro');
+                intro.remove();
+        
+
+
+            }
+            else if (computerScore === 5) {
+                
+
+                const result2 = document.getElementById('message');
+                result2.innerHTML = "<p>Computer won! <br> Reload the page to play again.</p>";
+
+                const rockButton = document.getElementById('button1');
+                rockButton.remove();
+                const paperButton = document.getElementById('button2');
+                paperButton.remove();
+                const scissorsButton = document.getElementById('button3');
+                scissorsButton.remove();
+                const intro = document.getElementById('intro');
+                intro.remove();
+            
+            }
             console.log('Scissors button clicked!');
             console.log(playerScore);
             console.log(computerScore);
@@ -134,12 +219,12 @@
         cScoreCount.innerHTML = `${computerScore}`;
 
 
+
     }
 
-
-
-
     playGame()
+
+
 
 
     /*
